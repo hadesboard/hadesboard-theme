@@ -551,8 +551,16 @@ add_action('customize_register', 'hadesboard_customize_register');
 function hadesboard_reading_time($post_id = null) {
     $post_id = $post_id ?: get_the_ID();
     $content = get_post_field('post_content', $post_id);
-    $word_count = str_word_count(strip_tags($content));
-    $reading_time = ceil($word_count / 200);
+    $content = strip_tags($content);
+
+    // Count words for Persian/Unicode text
+    // Split by whitespace and filter out empty strings
+    $words = preg_split('/\s+/u', trim($content), -1, PREG_SPLIT_NO_EMPTY);
+    $word_count = count($words);
+
+    // Calculate reading time (200 words per minute)
+    $reading_time = max(1, ceil($word_count / 200));
+
     return sprintf(_n('%d دقیقه مطالعه', '%d دقیقه مطالعه', $reading_time, 'hadesboard'), $reading_time);
 }
 
