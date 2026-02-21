@@ -1,0 +1,743 @@
+/*
+Theme Name: HadesBoard
+Theme URI: https://hadesboard.ir
+Author: Mohammad Gandomi
+Author URI: https://hadesboard.ir
+Description: A minimal, fast, and SEO-friendly Persian portfolio theme with dark mode. Perfect for developers and freelancers.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hadesboard
+Tags: portfolio, blog, one-column, custom-menu, custom-logo, featured-images, rtl-language-support, translation-ready
+
+HadesBoard WordPress Theme, (C) 2024 Mohammad Gandomi
+*/
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── Tokens ─── */
+:root {
+  --clr-bg: #111;
+  --clr-surface: #1a1a1a;
+  --clr-border: #3a3a3a;
+  --clr-text: #ccc;
+  --clr-text-muted: #aaa;
+  --clr-heading: #efefef;
+  --clr-accent: #bbb;
+  --font: 'Vazirmatn', system-ui, sans-serif;
+  --max-w: 640px;
+  --space: 1.5rem;
+}
+
+/* ─── Base ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.85;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background: #333;
+  color: #ccc;
+}
+
+a {
+  color: var(--clr-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--clr-border);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+a:hover {
+  color: var(--clr-heading);
+  border-color: var(--clr-text-muted);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── Layout ─── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--space);
+  width: 100%;
+}
+
+/* ─── Header ─── */
+.site-header {
+  padding: 6rem 0 4rem;
+}
+
+.site-header.inner-header {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--clr-border);
+  margin-bottom: 2rem
+}
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.site-title a {
+  color: inherit;
+  border: none;
+}
+
+.site-description {
+  color: var(--clr-text-muted);
+  font-size: 0.9rem;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  color: var(--clr-heading);
+}
+
+.back-link::before {
+  content: '→ ';
+}
+
+/* ─── Divider ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--clr-border);
+  margin: 2.5rem 0;
+}
+
+/* ─── Sections ─── */
+.section {
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── About ─── */
+.about p {
+  margin-bottom: 1rem;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Skills ─── */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-list li {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  color: var(--clr-text-muted);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.skills-list li:hover {
+  color: var(--clr-text);
+  border-color: var(--clr-accent);
+}
+
+/* ─── Projects ─── */
+.project {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.project:last-child {
+  border-bottom: none;
+}
+
+.project-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--clr-heading);
+  margin-bottom: 0.35rem;
+}
+
+.project-title a {
+  color: inherit;
+  border: none;
+}
+
+.project-title a:hover {
+  color: var(--clr-accent);
+}
+
+.project-excerpt {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+.project-meta {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  margin-top: 0.4rem;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.project-link:hover {
+  color: var(--clr-heading);
+  border-color: var(--clr-accent);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ─── Blog ─── */
+.blog-post {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.blog-post:last-child {
+  border-bottom: none;
+}
+
+.blog-post-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--clr-heading);
+  margin-bottom: 0.35rem;
+}
+
+.blog-post-title a {
+  color: inherit;
+  border: none;
+}
+
+.blog-post-title a:hover {
+  color: var(--clr-accent);
+}
+
+.blog-post-excerpt {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+.blog-meta {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.blog-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  border-bottom: 1px solid var(--clr-border);
+  transition: all 0.3s;
+}
+
+.blog-link:hover {
+  color: var(--clr-heading);
+  border-color: var(--clr-accent);
+}
+
+/* ─── Contact ─── */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-list li {
+  font-size: 0.9rem;
+}
+
+.contact-list span {
+  color: var(--clr-text-muted);
+  display: inline-block;
+  min-width: 70px;
+}
+
+/* ─── Single Article ─── */
+.article-meta {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 1rem;
+}
+
+.article-meta span {
+  margin-left: 1rem;
+}
+
+.entry-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--clr-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.entry-content p {
+  margin-bottom: 1.5rem;
+}
+
+.entry-content h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-heading);
+  margin: 2.5rem 0 1rem;
+}
+
+.entry-content h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--clr-heading);
+  margin: 2rem 0 1rem;
+}
+
+.entry-content ul,
+.entry-content ol {
+  margin-bottom: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.entry-content li {
+  margin-bottom: 0.5rem;
+}
+
+.entry-content blockquote {
+  border-right: 2px solid var(--clr-border);
+  padding-right: 1rem;
+  margin: 1.5rem 0;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+.entry-content code {
+  font-family: 'Courier New', monospace;
+  background: var(--clr-surface);
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  font-size: 0.9em;
+  direction: ltr;
+  display: inline-block;
+}
+
+.entry-content pre {
+  background: var(--clr-surface);
+  padding: 1rem;
+  border-radius: 2px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  direction: ltr;
+}
+
+.entry-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.entry-content img {
+  border-radius: 2px;
+  margin: 1.5rem 0;
+}
+
+/* ─── Author Box ─── */
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--clr-surface);
+  border-radius: 2px;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  background: var(--clr-border);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-info h4 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--clr-heading);
+  margin-bottom: 0.25rem;
+}
+
+.author-info p {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+/* ─── Related Posts ─── */
+.related-posts h3 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+}
+
+.related-list {
+  list-style: none;
+}
+
+.related-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.related-list li:last-child {
+  border-bottom: none;
+}
+
+.related-list a {
+  border: none;
+  color: var(--clr-text);
+}
+
+.related-list a:hover {
+  color: var(--clr-heading);
+}
+
+.related-meta {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ─── Pagination ─── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.pagination a,
+.pagination span {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  color: var(--clr-text-muted);
+}
+
+.pagination a:hover {
+  color: var(--clr-heading);
+  border-color: var(--clr-accent);
+}
+
+.pagination .current {
+  color: var(--clr-heading);
+  border-color: var(--clr-accent);
+}
+
+/* ─── 404 ─── */
+.error-404 {
+  text-align: center;
+  padding: 6rem 0;
+}
+
+.error-404 h1 {
+  font-size: 4rem;
+  color: var(--clr-heading);
+  margin-bottom: 1rem;
+}
+
+.error-404 p {
+  color: var(--clr-text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+  margin-top: auto;
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+/* ─── Comments ─── */
+.comments-area {
+  margin-top: 1rem;
+}
+
+.comment-list {
+  list-style: none;
+}
+
+.comment-list .comment {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.comment-list .comment:last-child {
+  border-bottom: none;
+}
+
+.comment-author {
+  font-size: 0.9rem;
+  color: var(--clr-heading);
+  margin-bottom: 0.25rem;
+}
+
+.comment-author a {
+  color: var(--clr-heading);
+  border: none;
+}
+
+.comment-author .avatar {
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.comment-metadata {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.comment-metadata a {
+  color: var(--clr-text-muted);
+  border: none;
+}
+
+.comment-metadata a:hover {
+  color: var(--clr-heading);
+}
+
+.comment-body p {
+  margin-bottom: 0.5rem;
+}
+
+.comment-reply-link {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  border: none;
+}
+
+.comment-reply-link:hover {
+  color: var(--clr-heading);
+}
+
+/* Comment Form */
+.comment-respond {
+  margin-top: 2.5rem;
+}
+
+.comment-reply-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-heading);
+  margin-bottom: 1rem;
+}
+
+.comment-reply-title small a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--clr-text-muted);
+  margin-right: 0.5rem;
+}
+
+.logged-in-as {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 1rem;
+}
+
+.logged-in-as a {
+  color: var(--clr-text);
+}
+
+.comment-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+  width: 100%;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  color: var(--clr-text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  line-height: 1.6;
+  transition: border-color 0.3s;
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus,
+.comment-form textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+}
+
+.comment-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.comment-form p {
+  margin-bottom: 1rem;
+}
+
+.comment-form .required {
+  color: var(--clr-text-muted);
+}
+
+.comment-form .form-submit {
+  margin-top: 0.5rem;
+}
+
+.comment-form #submit {
+  background: transparent;
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  padding: 0.5rem 1.5rem;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+
+.comment-form #submit:hover {
+  color: var(--clr-heading);
+  border-color: var(--clr-accent);
+  background: rgba(255,255,255,0.03);
+}
+
+.no-comments {
+  color: var(--clr-text-muted);
+  font-size: 0.85rem;
+}
+
+/* ─── WordPress Core ─── */
+.wp-block-image {
+  margin: 1.5rem 0;
+}
+
+.alignleft {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.alignright {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.aligncenter {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 480px) {
+  .site-header {
+    padding: 4rem 0 2.5rem;
+  }
+
+  .site-title {
+    font-size: 1.15rem;
+  }
+
+  .section-title {
+    font-size: 0.75rem;
+  }
+
+  .entry-title {
+    font-size: 1.2rem;
+  }
+
+  .author-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}

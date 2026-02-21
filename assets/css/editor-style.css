@@ -1,0 +1,86 @@
+/**
+ * Editor Styles for HadesBoard Theme
+ *
+ * @package HadesBoard
+ */
+
+:root {
+  --clr-bg: #111;
+  --clr-surface: #1a1a1a;
+  --clr-border: #3a3a3a;
+  --clr-text: #ccc;
+  --clr-text-muted: #aaa;
+  --clr-heading: #efefef;
+}
+
+.editor-styles-wrapper {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.85;
+  font-size: 15px;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+  color: var(--clr-heading);
+}
+
+.editor-styles-wrapper h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+}
+
+.editor-styles-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 2rem 0 1rem;
+}
+
+.editor-styles-wrapper p {
+  margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper a {
+  color: var(--clr-text);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.editor-styles-wrapper blockquote {
+  border-right: 2px solid var(--clr-border);
+  padding-right: 1rem;
+  margin: 1.5rem 0;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+.editor-styles-wrapper code {
+  font-family: 'Courier New', monospace;
+  background: var(--clr-surface);
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+.editor-styles-wrapper pre {
+  background: var(--clr-surface);
+  padding: 1rem;
+  border-radius: 2px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol {
+  margin-bottom: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.editor-styles-wrapper li {
+  margin-bottom: 0.5rem;
+}
