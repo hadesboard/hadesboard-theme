@@ -589,6 +589,22 @@ function hadesboard_persian_to_english($string) {
 }
 
 /**
+ * Google Analytics (gtag.js)
+ */
+function hadesboard_google_analytics() {
+    ?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WE24NVC6RX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WE24NVC6RX');
+</script>
+    <?php
+}
+add_action('wp_head', 'hadesboard_google_analytics', 1);
+
+/**
  * Include additional files
  */
 require_once get_template_directory() . '/inc/template-tags.php';
